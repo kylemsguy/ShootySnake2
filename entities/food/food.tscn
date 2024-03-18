@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3r8ma45cn6ui"]
+
+[ext_resource type="Texture2D" uid="uid://4otnaf125l4v" path="res://entities/food/Food_Shell.png" id="1_p8box"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5yhoh"]
+
+[node name="Food" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5yhoh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p8box")

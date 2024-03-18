@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://btwpd350udgil"]
+
+[ext_resource type="Texture2D" uid="uid://cqj3ayum4mbgn" path="res://entities/snake/Snake_Body.png" id="1_n1gck"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo30e"]
+
+[node name="Snake_Body" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eo30e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n1gck")
