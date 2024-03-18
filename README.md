@@ -3,3 +3,4 @@ This is a re-creation of Shooty Snake created in Godot Engine instead of the old
 
 The initial assets are the same, but the game mechanics might be different.
 
+ShootySnake 1: https://github.com/kylemsguy/snake-shooter
