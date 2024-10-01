@@ -1,6 +1,7 @@
 extends Node
 
 var snake_body_template = load("res://entities/snake/snake_body.tscn")
+var bullet_template = load("res://entities/snake/bullet.tscn")
 
 var health = 100
 var new_snake_segments = []
@@ -8,12 +9,33 @@ var snake_segments = []
 var last_moved = 0
 var curr_time = 0
 var next_rotate = null
+var next_shoot = false
+const bullet_step = 16
 
 func create_body_segment():
 	new_snake_segments.append(snake_body_template.instantiate())
 	
 func queue_rotate(direction):
 	next_rotate = direction
+
+func queue_shoot(shoot_on):
+	next_shoot = shoot_on
+	
+func create_bullet():
+	var direction = $SnakeHead.direction
+	var position = $SnakeHead.position
+	if direction == Global.MOVE_SET.UP:
+		position.y -= bullet_step
+	elif direction == Global.MOVE_SET.RIGHT:
+		position.x += bullet_step
+	elif direction == Global.MOVE_SET.DOWN:
+		position.y += bullet_step
+	elif direction == Global.MOVE_SET.LEFT:
+		position.x -= bullet_step
+		
+	var bullet = bullet_template.instantiate()
+	bullet.position = position
+	add_child(bullet)
 	
 func _rotate(direction):
 	if not Global.is_direction_opposite(direction, $SnakeHead.direction):
@@ -45,10 +67,13 @@ func _process(delta):
 	
 	# Move head
 	move_snake_head()
+	# only shoot after we've moved to prevent head collisions
+	if next_shoot:
+		create_bullet()
 	if new_snake_segments:
 		var new_snake_segment = new_snake_segments.pop_back()
 		new_snake_segment.position = prev_position
-		$SnakeBodyContainer.add_child(new_snake_segment)
+		add_child(new_snake_segment)
 		snake_segments.append(new_snake_segment)
 	else:
 		# shuffle everything forwards
@@ -56,5 +81,5 @@ func _process(delta):
 			var curr_position = snake_segments[i].position
 			snake_segments[i].position = prev_position
 			prev_position = curr_position
-		
+	
 	last_moved = curr_time
