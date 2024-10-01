@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://oq27dh36duve"]
+
+[ext_resource type="Texture2D" uid="uid://dj44l1g0cg5f7" path="res://entities/snake/bullet.png" id="1_6fovn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w08df"]
+
+[node name="Bullet" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w08df")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6fovn")
