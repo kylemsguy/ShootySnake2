@@ -7,9 +7,19 @@ var new_snake_segments = []
 var snake_segments = []
 var last_moved = 0
 var curr_time = 0
+var next_rotate = null
 
 func create_body_segment():
 	new_snake_segments.append(snake_body_template.instantiate())
+	
+func queue_rotate(direction):
+	next_rotate = direction
+	
+func _rotate(direction):
+	if not Global.is_direction_opposite(direction, $SnakeHead.direction):
+		$SnakeHead.direction = direction
+		return true
+	return false
 	
 func move_snake_head():
 	var angle = $SnakeHead.rotation_degrees
@@ -28,6 +38,12 @@ func _process(delta):
 		return
 		
 	var prev_position = $SnakeHead.position
+	# Handle rotation
+	if next_rotate != null:
+		_rotate(next_rotate)
+		next_rotate = null
+	
+	# Move head
 	move_snake_head()
 	if new_snake_segments:
 		var new_snake_segment = new_snake_segments.pop_back()
