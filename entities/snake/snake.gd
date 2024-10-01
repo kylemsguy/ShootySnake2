@@ -2,6 +2,8 @@ extends Node
 
 var snake_body_template = load("res://entities/snake/snake_body.tscn")
 var bullet_template = load("res://entities/snake/bullet.tscn")
+var pew_sfx = load("res://sound/sfx/pew.wav")
+var boom_sfx = load("res://sound/sfx/boom.wav")
 
 var health = 100
 var new_snake_segments = []
@@ -36,6 +38,8 @@ func create_bullet():
 	var bullet = bullet_template.instantiate()
 	bullet.position = position
 	add_child(bullet)
+	$AudioStreamPlayer2D.set_stream(pew_sfx)
+	$AudioStreamPlayer2D.play()
 	
 func _rotate(direction):
 	if not Global.is_direction_opposite(direction, $SnakeHead.direction):
