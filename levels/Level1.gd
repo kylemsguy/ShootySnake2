@@ -1,6 +1,6 @@
 extends Node2D
 
-var food = load("res://entities/food/food.tscn")
+var food_template = load("res://entities/food/food.tscn")
 var snake_template = load("res://entities/snake/snake.tscn")
 
 # upper bounds for width/height
@@ -12,7 +12,7 @@ var snake = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var food = food.instantiate()
+	var food = food_template.instantiate()
 	food.position.x = 100
 	food.position.y = 100
 	add_child(food)

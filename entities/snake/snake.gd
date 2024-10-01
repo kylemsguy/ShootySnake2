@@ -12,7 +12,8 @@ var last_moved = 0
 var curr_time = 0
 var next_rotate = null
 var next_shoot = false
-const bullet_step = 16
+const bullet_offset = 16
+const bullet_speed = 1000
 
 func create_body_segment():
 	new_snake_segments.append(snake_body_template.instantiate())
@@ -26,17 +27,23 @@ func queue_shoot(shoot_on):
 func create_bullet():
 	var direction = $SnakeHead.direction
 	var position = $SnakeHead.position
+	var velocity = Vector2()
 	if direction == Global.MOVE_SET.UP:
-		position.y -= bullet_step
+		velocity.y = -bullet_speed
+		position.y -= bullet_offset
 	elif direction == Global.MOVE_SET.RIGHT:
-		position.x += bullet_step
+		velocity.x = bullet_speed
+		position.x += bullet_offset
 	elif direction == Global.MOVE_SET.DOWN:
-		position.y += bullet_step
+		velocity.y = bullet_speed
+		position.y += bullet_offset
 	elif direction == Global.MOVE_SET.LEFT:
-		position.x -= bullet_step
+		velocity.x = -bullet_speed
+		position.x -= bullet_offset
 		
 	var bullet = bullet_template.instantiate()
 	bullet.position = position
+	bullet.linear_velocity = velocity
 	add_child(bullet)
 	$AudioStreamPlayer2D.set_stream(pew_sfx)
 	$AudioStreamPlayer2D.play()
