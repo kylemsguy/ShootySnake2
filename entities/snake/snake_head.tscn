@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctlih3mvxbuqe"]
+[gd_scene load_steps=4 format=3 uid="uid://ctlih3mvxbuqe"]
 
+[ext_resource type="Script" path="res://entities/snake/snake_head_controller.gd" id="1_shjo6"]
 [ext_resource type="Texture2D" uid="uid://g13t3dy25nf0" path="res://entities/snake/Snake_Head.png" id="1_shse5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrgka"]
 
 [node name="SnakeHead" type="CharacterBody2D"]
+script = ExtResource("1_shjo6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vrgka")

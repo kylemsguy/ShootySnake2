@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w08df"]
 
 [node name="Bullet" type="RigidBody2D"]
+gravity_scale = 1.66533e-16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_w08df")
