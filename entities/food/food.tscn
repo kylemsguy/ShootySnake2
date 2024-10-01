@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3r8ma45cn6ui"]
+[gd_scene load_steps=4 format=3 uid="uid://d3r8ma45cn6ui"]
 
 [ext_resource type="Texture2D" uid="uid://4otnaf125l4v" path="res://entities/food/Food_Shell.png" id="1_p8box"]
+[ext_resource type="Script" path="res://entities/food/food.gd" id="1_xabll"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5yhoh"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xncfo"]
 
 [node name="Food" type="RigidBody2D"]
+gravity_scale = 1.66533e-16
+script = ExtResource("1_xabll")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_5yhoh")
+shape = SubResource("CircleShape2D_xncfo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_p8box")

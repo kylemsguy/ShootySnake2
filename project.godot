@@ -11,8 +11,23 @@ config_version=5
 [application]
 
 config/name="ShootySnake2"
+run/main_scene="res://levels/Level1.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://global.gd"
+
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
 
 [rendering]
 
