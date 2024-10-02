@@ -6,6 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w08df"]
 
 [node name="Bullet" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 7
 gravity_scale = 1.66533e-16
 script = ExtResource("1_hl3ao")
 

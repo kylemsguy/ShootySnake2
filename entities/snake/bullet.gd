@@ -16,5 +16,5 @@ func _physics_process(delta):
 	var movement = linear_velocity * delta
 	var collision = move_and_collide(movement)
 	if collision:	
-		print(collision.get_collider().name)
+		print("bullet:", collision.get_collider().name)
 		queue_free()

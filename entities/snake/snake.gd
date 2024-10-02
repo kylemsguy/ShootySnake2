@@ -12,7 +12,7 @@ var last_moved = 0
 var curr_time = 0
 var next_rotate = null
 var next_shoot = false
-const bullet_offset = 32
+const bullet_offset = 20
 const bullet_speed = 1000
 
 func create_body_segment():
@@ -66,6 +66,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	pass
+	
+func _physics_process(delta):
 	curr_time += delta
 	if curr_time - last_moved < 0.1:
 		return

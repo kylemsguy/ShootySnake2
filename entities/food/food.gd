@@ -12,6 +12,7 @@ func launch_random_velocity():
 	linear_velocity.y = rand_y
 	var direction = -1 if randi() % 2 == 0 else 1
 	angular_velocity = direction * spinspeed
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,3 +24,11 @@ func _process(delta):
 	time += 1
 	if time % Global.relaunch_interval == 0:
 		launch_random_velocity()
+
+func _physics_process(delta):
+	var movement = linear_velocity * delta
+	var collision = move_and_collide(movement)
+	if collision:	
+		print("Food: ", collision.get_collider().name)
+		if collision.get_collider().name == "Bullet":
+			queue_free()

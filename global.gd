@@ -2,7 +2,9 @@ extends Node
 
 var difficulty = 100
 const relaunch_interval = 100
+
 enum MOVE_SET {LEFT, RIGHT, UP, DOWN}
+
 const MOVE_SET_OPPOSITE = {
 	MOVE_SET.LEFT: MOVE_SET.RIGHT,
 	MOVE_SET.RIGHT: MOVE_SET.LEFT,

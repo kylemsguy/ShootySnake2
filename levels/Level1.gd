@@ -22,11 +22,6 @@ func _ready():
 	snake.position.y = 400
 	add_child(snake)
 	
-	#var bullet = load("res://entities/snake/bullet.tscn").instantiate()
-	#bullet.position.x = 200
-	#bullet.position.y = 300
-	#add_child(bullet)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
