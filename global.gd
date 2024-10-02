@@ -1,6 +1,5 @@
 extends Node
 
-var difficulty = 100
 const relaunch_interval = 100
 
 enum MOVE_SET {LEFT, RIGHT, UP, DOWN}

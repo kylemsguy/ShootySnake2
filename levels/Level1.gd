@@ -9,13 +9,16 @@ const height = 450
 
 var snake = null
 
+func spawn_food():
+	var food = food_template.instantiate()
+	
+	food.position.x = randi_range(20, 700)
+	food.position.y = randi_range(20, 400)
+	add_child(food)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var food = food_template.instantiate()
-	food.position.x = 100
-	food.position.y = 100
-	add_child(food)
+	spawn_food()
 	
 	snake = snake_template.instantiate()
 	snake.position.x = 400
@@ -26,6 +29,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var shooting = Input.is_action_pressed("shoot")
+	$ScoreLabel.text = "Health: " + str(PlayerVariables.health)
 	snake.queue_shoot(shooting)
 	if Input.is_action_just_pressed("up"):
 		snake.queue_rotate(Global.MOVE_SET.UP)

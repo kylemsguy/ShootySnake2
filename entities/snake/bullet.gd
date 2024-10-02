@@ -16,5 +16,8 @@ func _physics_process(delta):
 	var movement = linear_velocity * delta
 	var collision = move_and_collide(movement)
 	if collision:	
-		print("bullet:", collision.get_collider().name)
+		var collided_name = collision.get_collider().name
+		print("bullet: ", collided_name)
+		if collided_name != "wall":
+			get_parent().play_boom()
 		queue_free()

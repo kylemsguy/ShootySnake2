@@ -1,11 +1,12 @@
 extends Node
 
+# TODO: Implement collisions for snake head against tail, wall, bullet against tail
+
 var snake_body_template = load("res://entities/snake/snake_body.tscn")
 var bullet_template = load("res://entities/snake/bullet.tscn")
 var pew_sfx = load("res://sound/sfx/pew.wav")
 var boom_sfx = load("res://sound/sfx/boom.wav")
 
-var health = 100
 var new_snake_segments = []
 var snake_segments = []
 var last_moved = 0
@@ -45,7 +46,16 @@ func create_bullet():
 	bullet.position = position
 	bullet.linear_velocity = velocity
 	add_child(bullet)
-	$AudioStreamPlayer2D.set_stream(pew_sfx)
+	_play_sfx(pew_sfx)
+	
+
+func play_boom():
+	$AudioStreamPlayer2D2.stop()
+	$AudioStreamPlayer2D2.set_stream(boom_sfx)
+	$AudioStreamPlayer2D2.play()
+
+func _play_sfx(sfx):
+	$AudioStreamPlayer2D.set_stream(sfx)
 	$AudioStreamPlayer2D.play()
 	
 func _rotate(direction):

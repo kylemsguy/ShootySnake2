@@ -4,8 +4,10 @@ var rng = RandomNumberGenerator.new()
 const spinspeed = 10
 var time = 0
 
+var food_sound = load("res://sound/sfx/boom.wav")
+
 func launch_random_velocity():
-	var difficulty = Global.difficulty
+	var difficulty = PlayerVariables.difficulty
 	var rand_x = rng.randf_range(-difficulty, difficulty)
 	var rand_y = rng.randf_range(-difficulty, difficulty)
 	linear_velocity.x = rand_x
@@ -31,4 +33,7 @@ func _physics_process(delta):
 	if collision:	
 		print("Food: ", collision.get_collider().name)
 		if collision.get_collider().name == "Bullet":
+			# TODO: fix detecting collision with bullet (sometimes it shows up as @RigidBody2D@45
+			PlayerVariables.update_health(10)
+			get_parent().spawn_food()
 			queue_free()
