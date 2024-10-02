@@ -1,17 +1,21 @@
 extends CharacterBody2D
 
 var direction = Global.MOVE_SET.RIGHT
-const step = 16
+const step = 20
 
 func move_forward():
+	var pos = Vector2()
 	if direction == Global.MOVE_SET.UP:
-		position.y -= step
+		pos.y -= step
 	elif direction == Global.MOVE_SET.RIGHT:
-		position.x += step
+		pos.x += step
 	elif direction == Global.MOVE_SET.DOWN:
-		position.y += step
+		pos.y += step
 	elif direction == Global.MOVE_SET.LEFT:
-		position.x -= step
+		pos.x -= step
+	var collision = move_and_collide(pos)
+	if collision:
+		print(collision.get_collider().name)
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():

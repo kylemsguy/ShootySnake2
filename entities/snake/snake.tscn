@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1hmsmkxhes4f"]
+[gd_scene load_steps=4 format=3 uid="uid://pr3ccpip418v"]
 
 [ext_resource type="Script" path="res://entities/snake/snake.gd" id="1_e53wg"]
 [ext_resource type="PackedScene" uid="uid://ctlih3mvxbuqe" path="res://entities/snake/snake_head.tscn" id="2_ct2iw"]

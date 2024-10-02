@@ -12,7 +12,7 @@ var last_moved = 0
 var curr_time = 0
 var next_rotate = null
 var next_shoot = false
-const bullet_offset = 16
+const bullet_offset = 32
 const bullet_speed = 1000
 
 func create_body_segment():
